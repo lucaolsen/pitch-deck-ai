@@ -35,10 +35,10 @@ const OUTPUT_FORMATS = [
 ] as const;
 
 const PRELOADED_DOCS = [
-  { file: "01_case_study.md", name: "Case Study", description: "Real client success stories and metrics" },
-  { file: "02_icp_playbook.md", name: "ICP Playbook", description: "Ideal customer profiles and targeting" },
+{ file: "02_icp_playbook.md", name: "ICP Playbook", description: "Ideal customer profiles and targeting" },
   { file: "03_value_pillars.md", name: "Value Pillars", description: "Core value propositions and differentiators" },
   { file: "04_industries_sales_deck.md", name: "Industries Sales Deck", description: "Industry-specific sales material" },
+  { file: "06_latam_modular_sales_deck.md", name: "LATAM Modular Sales Deck", description: "Latin America modular sales deck with market data and country insights" },
 ];
 
 const PROGRESS_MESSAGES = [

@@ -11,11 +11,11 @@ Here is the flow you must follow:
 4. You also have access to the EBANX sales document database. You must select which documents are most relevant to the user's request.
 
 Available EBANX Documents:
-- 01_case_study.md (Real client success stories and metrics)
 - 02_icp_playbook.md (Ideal customer profiles and targeting)
 - 03_value_pillars.md (Core value propositions and differentiators)
 - 04_industries_sales_deck.md (Industry-specific sales material)
 - 05_latam_sales_deck.md (Latin America market data, payment methods, market size by country)
+- 06_latam_modular_sales_deck.md (EBANX Latin America modular sales deck — detailed market overview, country-by-country data, payment insights, internal use)
 
 You MUST respond strictly in JSON format matching this schema:
 {
