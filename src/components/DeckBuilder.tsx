@@ -827,8 +827,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
               <div className="flex items-start justify-between">
                 <div>
-                  <h2 className="text-lg font-semibold text-white mb-1">Base Documents</h2>
-                  <p className="text-sm text-white/40">
+                  <h2 className="text-lg font-semibold text-[#000E2B] mb-1">Base Documents</h2>
+                  <p className="text-sm text-[#5A6880]">
                     Select which EBANX documents to include when generating your pitch deck.
                   </p>
                 </div>
@@ -839,10 +839,10 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                   >
                     Select all
                   </button>
-                  <span className="text-[#3A4870]">/</span>
+                  <span className="text-[#5A6880]">/</span>
                   <button
                     onClick={() => setSelectedDocs(new Set())}
-                    className="text-[11px] font-medium text-white/40 hover:text-white cursor-pointer transition-colors"
+                    className="text-[11px] font-medium text-[#5A6880] hover:text-[#000E2B] cursor-pointer transition-colors"
                   >
                     Deselect all
                   </button>
@@ -850,7 +850,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               </div>
 
               {/* Selected count */}
-              <p className="text-xs text-white/40">
+              <p className="text-xs text-[#5A6880]">
                 {selectedDocs.size} of {PRELOADED_DOCS.length} documents selected
               </p>
 
@@ -866,7 +866,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                       className={`w-full flex items-center gap-4 p-4 rounded-lg border text-left cursor-pointer transition-all animate-fade-in ${
                         isSelected
                           ? "border-[var(--ebanx-blue)]/40 bg-[var(--ebanx-blue)]/5"
-                          : "border-border bg-white/5 opacity-60 hover:opacity-80"
+                          : "border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] opacity-60 hover:opacity-80"
                       }`}
                       style={{ animationDelay: `${i * 80}ms` }}
                     >
@@ -874,7 +874,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                       <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-all ${
                         isSelected
                           ? "bg-[var(--ebanx-blue)] border-[var(--ebanx-blue)]"
-                          : "border-[oklch(0.35_0.01_85)] bg-transparent"
+                          : "border-[rgba(0,14,43,0.25)] bg-transparent"
                       }`}>
                         {isSelected && (
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -885,9 +885,9 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
                       {/* Icon */}
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected ? "bg-[var(--ebanx-blue)]/15" : "bg-white/5"
+                        isSelected ? "bg-[var(--ebanx-blue)]/15" : "bg-[rgba(0,14,43,0.06)]"
                       }`}>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isSelected ? "var(--ebanx-blue)" : "oklch(0.45 0.01 85)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isSelected ? "var(--ebanx-blue)" : "#5A6880"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                           <polyline points="14 2 14 8 20 8" />
                         </svg>
@@ -895,14 +895,14 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
                       {/* Text */}
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-medium transition-colors ${isSelected ? "text-white" : "text-white/50"}`}>
+                        <p className={`text-sm font-medium transition-colors ${isSelected ? "text-[#000E2B]" : "text-[#5A6880]"}`}>
                           {doc.name}
                         </p>
-                        <p className="text-xs text-white/40">{doc.description}</p>
+                        <p className="text-xs text-[#5A6880]">{doc.description}</p>
                       </div>
 
                       {/* File label */}
-                      <span className="text-[10px] font-mono text-white/25 shrink-0">
+                      <span className="text-[10px] font-mono text-[#000E2B]/30 shrink-0">
                         {doc.file}
                       </span>
                     </button>
@@ -910,7 +910,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                 })}
               </div>
 
-              <p className="text-xs text-white/25 pt-2 pb-2">
+              <p className="text-xs text-[#5A6880] pt-2 pb-2">
                 These base documents contain real EBANX sales data, case studies, and value propositions
                 that the AI uses to generate data-driven pitch decks.
               </p>
@@ -921,8 +921,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
           {activeTab === "branding" && (
             <div className="p-6 space-y-6 animate-fade-in">
               <div>
-                <h2 className="text-lg font-semibold text-white mb-1">Brand Configuration</h2>
-                <p className="text-sm text-white/40">
+                <h2 className="text-lg font-semibold text-[#000E2B] mb-1">Brand Configuration</h2>
+                <p className="text-sm text-[#5A6880]">
                   Colors and fonts used in generated presentations.
                 </p>
               </div>
@@ -934,12 +934,12 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                   { label: "Background", key: "backgroundColor" as keyof BrandConfig, value: brand.backgroundColor },
                   { label: "Text Color", key: "textColor" as keyof BrandConfig, value: brand.textColor },
                 ].map((item) => (
-                  <div key={item.label} className="p-4 rounded-lg border border-border bg-white/5 space-y-2 group focus-within:border-[var(--ebanx-blue)] transition-colors">
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
+                  <div key={item.label} className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] space-y-2 group focus-within:border-[var(--ebanx-blue)] transition-colors">
+                    <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880]">
                       {item.label}
                     </label>
                     <div className="flex items-center gap-3">
-                      <div className="relative w-8 h-8 rounded-md border border-border shrink-0 overflow-hidden cursor-pointer">
+                      <div className="relative w-8 h-8 rounded-md border border-[rgba(0,14,43,0.15)] shrink-0 overflow-hidden cursor-pointer">
                         <input
                           type="color"
                           value={item.value}
@@ -951,7 +951,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                         type="text"
                         value={item.value}
                         onChange={(e) => setBrand({ ...brand, [item.key]: e.target.value })}
-                        className="flex-1 w-full text-sm font-mono text-white bg-transparent border-none focus:outline-none placeholder:text-white/25 uppercase"
+                        className="flex-1 w-full text-sm font-mono text-[#000E2B] bg-transparent border-none focus:outline-none placeholder:text-[#000E2B]/30 uppercase"
                       />
                     </div>
                   </div>
@@ -959,35 +959,35 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg border border-border bg-white/5 space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
+                <div className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
+                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880]">
                     Title Font
                   </label>
                   <select
                     value={brand.titleFont}
                     onChange={(e) => setBrand({ ...brand, titleFont: e.target.value })}
-                    className="w-full text-sm text-white bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] -ml-1 px-1 rounded"
+                    className="w-full text-sm text-[#000E2B] bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] -ml-1 px-1 rounded"
                     style={{ fontFamily: brand.titleFont }}
                   >
                     {FONTS.map((font) => (
-                      <option key={font} value={font} className="bg-white/6 text-white" style={{ fontFamily: font }}>
+                      <option key={font} value={font} style={{ fontFamily: font }}>
                         {font}
                       </option>
                     ))}
                   </select>
                 </div>
-                <div className="p-4 rounded-lg border border-border bg-white/5 space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
+                <div className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
+                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880]">
                     Body Font
                   </label>
                   <select
                     value={brand.bodyFont}
                     onChange={(e) => setBrand({ ...brand, bodyFont: e.target.value })}
-                    className="w-full text-sm text-white bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] -ml-1 px-1 rounded"
+                    className="w-full text-sm text-[#000E2B] bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] -ml-1 px-1 rounded"
                     style={{ fontFamily: brand.bodyFont }}
                   >
                     {FONTS.map((font) => (
-                      <option key={font} value={font} className="bg-white/6 text-white" style={{ fontFamily: font }}>
+                      <option key={font} value={font} style={{ fontFamily: font }}>
                         {font}
                       </option>
                     ))}
@@ -1001,55 +1001,55 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
           {activeTab === "history" && (
             <div className="p-6 space-y-6 animate-fade-in max-w-4xl">
               <div>
-                <h2 className="text-lg font-semibold text-white mb-1">Performance & History</h2>
-                <p className="text-sm text-white/40">
+                <h2 className="text-lg font-semibold text-[#000E2B] mb-1">Performance & History</h2>
+                <p className="text-sm text-[#5A6880]">
                   Track the decks you've generated, provide qualitative feedback, and measure long-term client outcomes to help the AI learn what converts.
                 </p>
               </div>
 
               {history.length === 0 ? (
-                <div className="text-center py-10 border border-dashed border-border rounded-xl bg-[#000C22]">
-                  <p className="text-white/40 text-sm">No decks generated yet.</p>
+                <div className="text-center py-10 border border-dashed border-[rgba(0,14,43,0.15)] rounded-xl bg-[#F4F6FF]">
+                  <p className="text-[#5A6880] text-sm">No decks generated yet.</p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   {history.map((deck) => (
-                    <div key={deck.id} className="p-5 rounded-xl border border-border bg-white/5 space-y-4">
+                    <div key={deck.id} className="p-5 rounded-xl border border-[rgba(0,14,43,0.10)] bg-white shadow-sm space-y-4">
                       {/* File Header */}
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-[var(--ebanx-blue)]/15 flex items-center justify-center shrink-0">
+                          <div className="w-10 h-10 rounded-lg bg-[var(--ebanx-blue)]/10 flex items-center justify-center shrink-0">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ebanx-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                               <polyline points="14 2 14 8 20 8" />
                             </svg>
                           </div>
                           <div>
-                            <a href={deck.downloadUrl} download={deck.fileName} className="text-sm font-semibold text-white hover:text-[var(--ebanx-blue)] hover:underline transition-colors block">
+                            <a href={deck.downloadUrl} download={deck.fileName} className="text-sm font-semibold text-[#000E2B] hover:text-[var(--ebanx-blue)] hover:underline transition-colors block">
                               {deck.fileName}
                             </a>
-                            <p className="text-xs text-white/40 mt-0.5">
+                            <p className="text-xs text-[#5A6880] mt-0.5">
                               Generated {new Date(deck.createdAt).toLocaleDateString()}
                             </p>
                           </div>
                         </div>
                         <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${
-                          deck.performance === "won" ? "bg-green-500/15 text-green-400 border border-green-500/30" :
-                          deck.performance === "lost" ? "bg-red-500/15 text-red-500 border border-red-500/30" :
-                          deck.performance === "ongoing" ? "bg-blue-500/15 text-blue-400 border border-blue-500/30" :
-                          "bg-white/5 text-white/40 border border-border"
+                          deck.performance === "won" ? "bg-green-500/15 text-green-600 border border-green-500/30" :
+                          deck.performance === "lost" ? "bg-red-500/10 text-red-600 border border-red-500/20" :
+                          deck.performance === "ongoing" ? "bg-blue-500/10 text-blue-600 border border-blue-500/20" :
+                          "bg-[#F4F6FF] text-[#5A6880] border border-[rgba(0,14,43,0.10)]"
                         }`}>
                           {deck.performance === "won" ? "Closed Won" : deck.performance}
                         </span>
                       </div>
 
-                      <div className="h-px bg-border/50" />
+                      <div className="h-px bg-[rgba(0,14,43,0.08)]" />
 
                       {/* Analytics Form */}
                       <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-3">
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6880]">
                               Target Client
                             </label>
                             <input
@@ -1057,12 +1057,12 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                               value={deck.clientName}
                               onChange={(e) => updateDeckHistory(deck.id, { clientName: e.target.value })}
                               placeholder="e.g., Netflix, Spotify..."
-                              className="w-full h-9 px-3 rounded-md bg-white/4 border border-border text-sm text-white placeholder:text-white/25 focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                              className="w-full h-9 px-3 rounded-md bg-[#F4F6FF] border border-[rgba(0,14,43,0.12)] text-sm text-[#000E2B] placeholder:text-[#000E2B]/30 focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] transition-colors"
                             />
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6880]">
                               Generation Output Quality (1-5)
                             </label>
                             <div className="flex items-center gap-1.5 pt-1">
@@ -1072,7 +1072,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                                   onClick={() => updateDeckHistory(deck.id, { rating: star })}
                                   className="focus:outline-none transition-transform hover:scale-110"
                                 >
-                                  <svg width="20" height="20" viewBox="0 0 24 24" fill={deck.rating >= star ? "var(--ebanx-blue)" : "none"} stroke={deck.rating >= star ? "var(--ebanx-blue)" : "oklch(0.3 0.01 85)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                  <svg width="20" height="20" viewBox="0 0 24 24" fill={deck.rating >= star ? "var(--ebanx-blue)" : "none"} stroke={deck.rating >= star ? "var(--ebanx-blue)" : "rgba(0,14,43,0.25)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                                   </svg>
                                 </button>
@@ -1081,13 +1081,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6880]">
                               Long-term Deal Performance
                             </label>
                             <select
                               value={deck.performance}
                               onChange={(e) => updateDeckHistory(deck.id, { performance: e.target.value as DeckHistoryEntry["performance"] })}
-                              className="w-full h-9 px-3 rounded-md bg-white/4 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                              className="w-full h-9 px-3 rounded-md bg-[#F4F6FF] border border-[rgba(0,14,43,0.12)] text-sm text-[#000E2B] appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] transition-colors"
                             >
                               <option value="pending">Pending</option>
                               <option value="ongoing">Active / Ongoing Validation</option>
@@ -1098,14 +1098,14 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                         </div>
 
                         <div className="space-y-1 h-full flex flex-col">
-                          <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                          <label className="text-[10px] font-semibold uppercase tracking-wider text-[#5A6880]">
                             Qualitative Feedback / Deal Context
                           </label>
                           <textarea
                             value={deck.feedback}
                             onChange={(e) => updateDeckHistory(deck.id, { feedback: e.target.value })}
                             placeholder="How did the client react? What worked and what failed in this presentation? This text will be used to automatically train future AI models."
-                            className="flex-1 w-full min-h-[100px] p-3 rounded-md bg-white/4 border border-border text-xs text-white placeholder:text-white/25 resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                            className="flex-1 w-full min-h-[100px] p-3 rounded-md bg-[#F4F6FF] border border-[rgba(0,14,43,0.12)] text-xs text-[#000E2B] placeholder:text-[#000E2B]/30 resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] transition-colors"
                           />
                         </div>
                       </div>
