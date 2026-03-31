@@ -395,9 +395,9 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
   return (
     <div className="flex h-screen overflow-hidden">
       {/* ─── LEFT SIDEBAR ─── */}
-      <aside className="w-[380px] shrink-0 border-r border-border flex flex-col bg-[#000C22]">
+      <aside className="w-[380px] shrink-0 border-r border-white/10 flex flex-col bg-[#000E2B]">
         {/* Header */}
-        <div className="px-6 py-5 border-b border-border">
+        <div className="px-6 py-5 border-b border-white/10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg, #2752FE 0%, #1A3FC0 100%)" }}>
               <span className="text-white text-[11px] font-black tracking-widest">EB</span>
@@ -414,13 +414,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
         </div>
 
         {/* Sidebar Tabs */}
-        <div className="px-6 py-3 border-b border-border flex gap-2">
+        <div className="px-6 py-3 border-b border-white/10 flex gap-2">
           <button
             onClick={() => setSidebarTab("guided")}
             className={`flex-1 h-8 rounded-md text-[11px] font-semibold tracking-wider uppercase transition-colors ${
               sidebarTab === "guided"
-                ? "bg-[#001A45] border border-[oklch(0.25_0.005_85)] text-white shadow-sm"
-                : "bg-transparent text-[#7A8BBF] hover:text-white hover:bg-white/5 border border-transparent"
+                ? "bg-[#2752FE] text-white shadow-sm"
+                : "bg-transparent text-white/50 hover:text-white hover:bg-white/8 border border-transparent"
             }`}
           >
             Guided
@@ -429,8 +429,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             onClick={() => setSidebarTab("free-text")}
             className={`flex-1 h-8 rounded-md text-[11px] font-semibold tracking-wider uppercase transition-colors ${
               sidebarTab === "free-text"
-                ? "bg-[#001A45] border border-[oklch(0.25_0.005_85)] text-white shadow-sm"
-                : "bg-transparent text-[#7A8BBF] hover:text-white hover:bg-white/5 border border-transparent"
+                ? "bg-[#2752FE] text-white shadow-sm"
+                : "bg-transparent text-white/50 hover:text-white hover:bg-white/8 border border-transparent"
             }`}
           >
             Free Text
@@ -443,13 +443,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             <>
           {/* Country */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Country
             </label>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="w-full h-11 px-3 rounded-lg bg-[#001A45] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full h-11 px-3 rounded-lg bg-white/6 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             >
               {COUNTRIES.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -459,13 +459,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {/* Vertical */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Vertical
             </label>
             <select
               value={vertical}
               onChange={(e) => setVertical(e.target.value)}
-              className="w-full h-11 px-3 rounded-lg bg-[#001A45] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full h-11 px-3 rounded-lg bg-white/6 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             >
               {VERTICALS.map((v) => (
                 <option key={v} value={v}>{v}</option>
@@ -475,13 +475,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {/* Persona */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Persona
             </label>
             <select
               value={persona}
               onChange={(e) => setPersona(e.target.value)}
-              className="w-full h-11 px-3 rounded-lg bg-[#001A45] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full h-11 px-3 rounded-lg bg-white/6 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             >
               {PERSONAS.map((p) => (
                 <option key={p} value={p}>{p}</option>
@@ -491,13 +491,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {/* Output Format */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Output Format
             </label>
             <select
               value={deckType}
               onChange={(e) => setDeckType(e.target.value as "one-pager" | "pitch-15" | "modular")}
-              className="w-full h-11 px-3 rounded-lg bg-[#001A45] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full h-11 px-3 rounded-lg bg-white/6 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             >
               {OUTPUT_FORMATS.map((f) => (
                 <option key={f.value} value={f.value}>{f.label}</option>
@@ -507,13 +507,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {/* Sales Methodology */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Sales Methodology
             </label>
             <select
               value={methodology}
               onChange={(e) => setMethodology(e.target.value)}
-              className="w-full h-11 px-3 rounded-lg bg-[#001A45] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full h-11 px-3 rounded-lg bg-white/6 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             >
               {METHODOLOGIES.map((m) => (
                 <option key={m.id} value={m.id}>{m.label}</option>
@@ -523,22 +523,22 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {/* Additional Context */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+            <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
               Additional Context
-              <span className="text-[#5C6D9A] ml-1 normal-case tracking-normal font-normal">(optional)</span>
+              <span className="text-white/30 ml-1 normal-case tracking-normal font-normal">(optional)</span>
             </label>
             <textarea
               value={additionalContext}
               onChange={(e) => setAdditionalContext(e.target.value)}
               placeholder="e.g., Focus on ROI metrics, mention competitor X..."
               rows={3}
-              className="w-full px-3 py-2.5 rounded-lg bg-[#001A45] border border-border text-sm text-white placeholder:text-[#4E5E8A] resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-[#001F52]"
+              className="w-full px-3 py-2.5 rounded-lg bg-white/6 border border-border text-sm text-white placeholder:text-white/25 resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors hover:bg-white/10"
             />
           </div>
 
           {/* Dynamic Methodology Engine */}
           <div className="rounded-lg border border-border p-4 space-y-3">
-            <p className="text-xs font-semibold text-[#8494BC]">
+            <p className="text-xs font-semibold text-white/50">
               {METHODOLOGIES.find(m => m.id === methodology)?.label} engine
             </p>
             <div className="space-y-2">
@@ -547,7 +547,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                   <div className={`w-6 h-6 rounded-md ${item.color} flex items-center justify-center text-[10px] font-bold shrink-0 shadow-sm border border-white/5`}>
                     {item.letter}
                   </div>
-                  <span className="text-[13px] text-[#A0B0CC]">{item.label}</span>
+                  <span className="text-[13px] text-white/70">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -557,21 +557,21 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
           {sidebarTab === "free-text" && (
             <div className="h-full flex flex-col space-y-3 pb-4">
-              <label className="text-[11px] font-semibold uppercase tracking-wider text-[#7A8BBF]">
+              <label className="text-[11px] font-semibold uppercase tracking-wider text-white/60">
                 Custom Prompt Builder
               </label>
 
               {promptHistory.length > 0 && (
-                <div className="flex-1 overflow-y-auto space-y-3 mb-2 p-3 bg-[#001540] rounded-lg border border-border">
+                <div className="flex-1 overflow-y-auto space-y-3 mb-2 p-3 bg-white/8 rounded-lg border border-border">
                   {promptHistory.map((msg, i) => (
                     <div key={i} className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}>
-                      <span className="text-[10px] font-semibold text-[#6878A8] mb-1 uppercase tracking-wider">
+                      <span className="text-[10px] font-semibold text-white/40 mb-1 uppercase tracking-wider">
                         {msg.role === "user" ? "You" : "AI Optimizer"}
                       </span>
                       <div className={`p-3 rounded-xl max-w-[90%] text-sm ${
                         msg.role === "user" 
                           ? "bg-[var(--ebanx-blue)] text-white rounded-br-none" 
-                          : "bg-[#00245D] text-white rounded-bl-none border border-border"
+                          : "bg-white/12 text-white rounded-bl-none border border-border"
                       }`}>
                         {msg.content}
                       </div>
@@ -584,11 +584,11 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
                 placeholder={promptHistory.length > 0 ? "Answer the AI's question to continue..." : "Describe exactly what kind of pitch deck you want. e.g., 'Make a 5-slide deck focusing on the pain points of a CFO in the gaming industry in Mexico.'"}
-                className={`w-full p-4 rounded-lg bg-[#001A45] border border-border text-sm text-white placeholder:text-[#4E5E8A] resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors ${promptHistory.length > 0 ? "min-h-[120px]" : "min-h-[400px]"}`}
+                className={`w-full p-4 rounded-lg bg-white/6 border border-border text-sm text-white placeholder:text-white/25 resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors ${promptHistory.length > 0 ? "min-h-[120px]" : "min-h-[400px]"}`}
                 style={promptHistory.length > 0 ? undefined : { height: "400px" }}
               />
               {promptHistory.length === 0 && (
-                <p className="text-xs text-[#6878A8] leading-relaxed pt-2">
+                <p className="text-xs text-white/40 leading-relaxed pt-2">
                   This prompt replaces the Guided parameters. The AI may ask you follow-up questions to gather necessary context before generating.
                 </p>
               )}
@@ -597,7 +597,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
         </div>
 
         {/* Generate Button */}
-        <div className="px-6 py-4 border-t border-border">
+        <div className="px-6 py-4 border-t border-white/10">
           <button
             onClick={handleGenerate}
             disabled={status === "generating"}
@@ -622,9 +622,9 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
       </aside>
 
       {/* ─── RIGHT PANEL ─── */}
-      <main className="flex-1 flex flex-col min-w-0 bg-[#000E2B]">
+      <main className="flex-1 flex flex-col min-w-0 bg-white">
         {/* Tab Bar */}
-        <div className="border-b border-border px-6">
+        <div className="border-b border-[rgba(0,14,43,0.10)] px-6 bg-white">
           <div className="flex items-center gap-1">
             {(
               [
@@ -639,13 +639,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-3 text-sm font-medium transition-colors relative ${
                   activeTab === tab.id
-                    ? "text-white"
-                    : "text-[#6878A8] hover:text-[#A0B0CC]"
+                    ? "text-[#000E2B]"
+                    : "text-[#8494BC] hover:text-[#000E2B]"
                 }`}
               >
                 {tab.label}
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-[var(--ebanx-green)] rounded-full" />
+                  <div className="absolute bottom-0 left-2 right-2 h-[2px] bg-[var(--ebanx-blue)] rounded-full" />
                 )}
               </button>
             ))}
@@ -660,18 +660,18 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               {/* Idle state */}
               {status === "idle" && (
                 <div className="text-center animate-fade-in max-w-md">
-                  <div className="w-14 h-14 rounded-xl bg-[#001A45] border border-border flex items-center justify-center mx-auto mb-5">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4BDBBA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <div className="w-14 h-14 rounded-xl bg-[#EEF1FA] border border-[rgba(0,14,43,0.08)] flex items-center justify-center mx-auto mb-5">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ebanx-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="3" width="20" height="14" rx="2" />
                       <path d="M8 21h8" />
                       <path d="M12 17v4" />
                       <path d="M7 8h2M7 12h5" />
                     </svg>
                   </div>
-                  <h2 className="text-xl font-semibold text-white mb-2">
+                  <h2 className="text-xl font-semibold text-[#000E2B] mb-2">
                     Ready to generate
                   </h2>
-                  <p className="text-sm text-[#6878A8] leading-relaxed">
+                  <p className="text-sm text-[#5A6880] leading-relaxed">
                     Select your parameters on the left and click
                     &ldquo;Generate content&rdquo; to produce a tailored sales
                     piece.
@@ -683,29 +683,29 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               {status === "generating" && (
                 <div className="w-full max-w-lg animate-fade-in space-y-6">
                   <div className="text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-[#001540] border border-border flex items-center justify-center mx-auto mb-5 animate-pulse-glow">
+                    <div className="w-16 h-16 rounded-2xl bg-[#EEF1FA] border border-[rgba(0,14,43,0.08)] flex items-center justify-center mx-auto mb-5 animate-pulse-glow">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="animate-spin" style={{ animationDuration: "3s" }}>
-                        <circle cx="12" cy="12" r="10" stroke="#001A45" strokeWidth="2" />
+                        <circle cx="12" cy="12" r="10" stroke="#E0E8FF" strokeWidth="2" />
                         <path d="M12 2a10 10 0 0 1 10 10" stroke="var(--ebanx-blue)" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                     </div>
-                    <h2 className="text-lg font-semibold text-white mb-1">
+                    <h2 className="text-lg font-semibold text-[#000E2B] mb-1">
                       {statusMessage}
                     </h2>
-                    <p className="text-xs text-[#5C6D9A]">
+                    <p className="text-xs text-[#5A6880]">
                       This usually takes 2–8 minutes for a full deck
                     </p>
                   </div>
 
                   {/* Progress bar */}
                   <div className="space-y-2">
-                    <div className="w-full h-1.5 rounded-full bg-[#001A45] overflow-hidden">
+                    <div className="w-full h-1.5 rounded-full bg-[#E0E8FF] overflow-hidden">
                       <div
                         className="h-full rounded-full progress-bar-fill"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
-                    <div className="flex justify-between text-[11px] text-[#5C6D9A]">
+                    <div className="flex justify-between text-[11px] text-[#5A6880]">
                       <span>{statusMessage}</span>
                       <span>{progress}%</span>
                     </div>
@@ -716,17 +716,17 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               {/* Success state */}
               {status === "success" && downloadUrl && (
                 <div className="w-full max-w-lg animate-slide-up">
-                  <div className="rounded-xl border border-border bg-[#001235] overflow-hidden">
+                  <div className="rounded-xl border border-[rgba(0,14,43,0.10)] bg-white shadow-sm overflow-hidden">
                     {/* Success header */}
-                    <div className="px-6 py-5 border-b border-border flex items-center gap-3">
+                    <div className="px-6 py-5 border-b border-[rgba(0,14,43,0.08)] flex items-center gap-3 bg-[#F4F6FF]">
                       <div className="w-10 h-10 rounded-lg bg-[var(--ebanx-green)]/15 flex items-center justify-center">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ebanx-green)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
                       <div>
-                        <h3 className="text-sm font-semibold text-white">Deck generated successfully</h3>
-                        <p className="text-xs text-[#6878A8]">
+                        <h3 className="text-sm font-semibold text-[#000E2B]">Deck generated successfully</h3>
+                        <p className="text-xs text-[#5A6880]">
                           {genTime ? `Completed in ${formatTime(genTime)}` : "Ready to download"}
                         </p>
                       </div>
@@ -734,8 +734,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
                     {/* File card */}
                     <div className="p-6">
-                      <div className="flex items-center gap-4 p-4 rounded-lg bg-[#000F2C] border border-border">
-                        <div className="w-12 h-12 rounded-lg bg-[var(--ebanx-blue)]/15 flex items-center justify-center shrink-0">
+                      <div className="flex items-center gap-4 p-4 rounded-lg bg-[#F4F6FF] border border-[rgba(0,14,43,0.08)]">
+                        <div className="w-12 h-12 rounded-lg bg-[var(--ebanx-blue)]/10 flex items-center justify-center shrink-0">
                           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ebanx-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                             <polyline points="14 2 14 8 20 8" />
@@ -744,10 +744,10 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate">
+                          <p className="text-sm font-medium text-[#000E2B] truncate">
                             {fileName}
                           </p>
-                          <p className="text-xs text-[#6878A8]">
+                          <p className="text-xs text-[#5A6880]">
                             PPTX • {fileSize ? formatFileSize(fileSize) : ""}
                           </p>
                         </div>
@@ -770,7 +770,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                           setStatus("idle");
                           setDownloadUrl(null);
                         }}
-                        className="w-full mt-2 h-9 rounded-lg text-[#7A8BBF] text-xs font-medium cursor-pointer transition-colors hover:text-white hover:bg-white/5"
+                        className="w-full mt-2 h-9 rounded-lg text-[#5A6880] text-xs font-medium cursor-pointer transition-colors hover:text-[#000E2B] hover:bg-[#EEF1FA]"
                       >
                         Generate another
                       </button>
@@ -828,7 +828,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               <div className="flex items-start justify-between">
                 <div>
                   <h2 className="text-lg font-semibold text-white mb-1">Base Documents</h2>
-                  <p className="text-sm text-[#6878A8]">
+                  <p className="text-sm text-white/40">
                     Select which EBANX documents to include when generating your pitch deck.
                   </p>
                 </div>
@@ -842,7 +842,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                   <span className="text-[#3A4870]">/</span>
                   <button
                     onClick={() => setSelectedDocs(new Set())}
-                    className="text-[11px] font-medium text-[#6878A8] hover:text-white cursor-pointer transition-colors"
+                    className="text-[11px] font-medium text-white/40 hover:text-white cursor-pointer transition-colors"
                   >
                     Deselect all
                   </button>
@@ -850,7 +850,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               </div>
 
               {/* Selected count */}
-              <p className="text-xs text-[#6878A8]">
+              <p className="text-xs text-white/40">
                 {selectedDocs.size} of {PRELOADED_DOCS.length} documents selected
               </p>
 
@@ -866,7 +866,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                       className={`w-full flex items-center gap-4 p-4 rounded-lg border text-left cursor-pointer transition-all animate-fade-in ${
                         isSelected
                           ? "border-[var(--ebanx-blue)]/40 bg-[var(--ebanx-blue)]/5"
-                          : "border-border bg-[#001235] opacity-60 hover:opacity-80"
+                          : "border-border bg-white/5 opacity-60 hover:opacity-80"
                       }`}
                       style={{ animationDelay: `${i * 80}ms` }}
                     >
@@ -895,14 +895,14 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
                       {/* Text */}
                       <div className="flex-1 min-w-0">
-                        <p className={`text-sm font-medium transition-colors ${isSelected ? "text-white" : "text-[#8494BC]"}`}>
+                        <p className={`text-sm font-medium transition-colors ${isSelected ? "text-white" : "text-white/50"}`}>
                           {doc.name}
                         </p>
-                        <p className="text-xs text-[#6878A8]">{doc.description}</p>
+                        <p className="text-xs text-white/40">{doc.description}</p>
                       </div>
 
                       {/* File label */}
-                      <span className="text-[10px] font-mono text-[#4E5E8A] shrink-0">
+                      <span className="text-[10px] font-mono text-white/25 shrink-0">
                         {doc.file}
                       </span>
                     </button>
@@ -910,7 +910,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                 })}
               </div>
 
-              <p className="text-xs text-[#4E5E8A] pt-2 pb-2">
+              <p className="text-xs text-white/25 pt-2 pb-2">
                 These base documents contain real EBANX sales data, case studies, and value propositions
                 that the AI uses to generate data-driven pitch decks.
               </p>
@@ -922,7 +922,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             <div className="p-6 space-y-6 animate-fade-in">
               <div>
                 <h2 className="text-lg font-semibold text-white mb-1">Brand Configuration</h2>
-                <p className="text-sm text-[#6878A8]">
+                <p className="text-sm text-white/40">
                   Colors and fonts used in generated presentations.
                 </p>
               </div>
@@ -934,8 +934,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                   { label: "Background", key: "backgroundColor" as keyof BrandConfig, value: brand.backgroundColor },
                   { label: "Text Color", key: "textColor" as keyof BrandConfig, value: brand.textColor },
                 ].map((item) => (
-                  <div key={item.label} className="p-4 rounded-lg border border-border bg-[#001235] space-y-2 group focus-within:border-[var(--ebanx-blue)] transition-colors">
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                  <div key={item.label} className="p-4 rounded-lg border border-border bg-white/5 space-y-2 group focus-within:border-[var(--ebanx-blue)] transition-colors">
+                    <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
                       {item.label}
                     </label>
                     <div className="flex items-center gap-3">
@@ -951,7 +951,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                         type="text"
                         value={item.value}
                         onChange={(e) => setBrand({ ...brand, [item.key]: e.target.value })}
-                        className="flex-1 w-full text-sm font-mono text-white bg-transparent border-none focus:outline-none placeholder:text-[#4E5E8A] uppercase"
+                        className="flex-1 w-full text-sm font-mono text-white bg-transparent border-none focus:outline-none placeholder:text-white/25 uppercase"
                       />
                     </div>
                   </div>
@@ -959,8 +959,8 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg border border-border bg-[#001235] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                <div className="p-4 rounded-lg border border-border bg-white/5 space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
+                  <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
                     Title Font
                   </label>
                   <select
@@ -970,14 +970,14 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                     style={{ fontFamily: brand.titleFont }}
                   >
                     {FONTS.map((font) => (
-                      <option key={font} value={font} className="bg-[#001A45] text-white" style={{ fontFamily: font }}>
+                      <option key={font} value={font} className="bg-white/6 text-white" style={{ fontFamily: font }}>
                         {font}
                       </option>
                     ))}
                   </select>
                 </div>
-                <div className="p-4 rounded-lg border border-border bg-[#001235] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                <div className="p-4 rounded-lg border border-border bg-white/5 space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
+                  <label className="text-[11px] font-semibold uppercase tracking-wider text-white/40">
                     Body Font
                   </label>
                   <select
@@ -987,7 +987,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                     style={{ fontFamily: brand.bodyFont }}
                   >
                     {FONTS.map((font) => (
-                      <option key={font} value={font} className="bg-[#001A45] text-white" style={{ fontFamily: font }}>
+                      <option key={font} value={font} className="bg-white/6 text-white" style={{ fontFamily: font }}>
                         {font}
                       </option>
                     ))}
@@ -1002,19 +1002,19 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             <div className="p-6 space-y-6 animate-fade-in max-w-4xl">
               <div>
                 <h2 className="text-lg font-semibold text-white mb-1">Performance & History</h2>
-                <p className="text-sm text-[#6878A8]">
+                <p className="text-sm text-white/40">
                   Track the decks you've generated, provide qualitative feedback, and measure long-term client outcomes to help the AI learn what converts.
                 </p>
               </div>
 
               {history.length === 0 ? (
                 <div className="text-center py-10 border border-dashed border-border rounded-xl bg-[#000C22]">
-                  <p className="text-[#6878A8] text-sm">No decks generated yet.</p>
+                  <p className="text-white/40 text-sm">No decks generated yet.</p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   {history.map((deck) => (
-                    <div key={deck.id} className="p-5 rounded-xl border border-border bg-[#001235] space-y-4">
+                    <div key={deck.id} className="p-5 rounded-xl border border-border bg-white/5 space-y-4">
                       {/* File Header */}
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
@@ -1028,7 +1028,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                             <a href={deck.downloadUrl} download={deck.fileName} className="text-sm font-semibold text-white hover:text-[var(--ebanx-blue)] hover:underline transition-colors block">
                               {deck.fileName}
                             </a>
-                            <p className="text-xs text-[#6878A8] mt-0.5">
+                            <p className="text-xs text-white/40 mt-0.5">
                               Generated {new Date(deck.createdAt).toLocaleDateString()}
                             </p>
                           </div>
@@ -1037,7 +1037,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                           deck.performance === "won" ? "bg-green-500/15 text-green-400 border border-green-500/30" :
                           deck.performance === "lost" ? "bg-red-500/15 text-red-500 border border-red-500/30" :
                           deck.performance === "ongoing" ? "bg-blue-500/15 text-blue-400 border border-blue-500/30" :
-                          "bg-white/5 text-[#6878A8] border border-border"
+                          "bg-white/5 text-white/40 border border-border"
                         }`}>
                           {deck.performance === "won" ? "Closed Won" : deck.performance}
                         </span>
@@ -1049,7 +1049,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                       <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-3">
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
                               Target Client
                             </label>
                             <input
@@ -1057,12 +1057,12 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                               value={deck.clientName}
                               onChange={(e) => updateDeckHistory(deck.id, { clientName: e.target.value })}
                               placeholder="e.g., Netflix, Spotify..."
-                              className="w-full h-9 px-3 rounded-md bg-[#000F2C] border border-border text-sm text-white placeholder:text-[#4E5E8A] focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                              className="w-full h-9 px-3 rounded-md bg-white/4 border border-border text-sm text-white placeholder:text-white/25 focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
                             />
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
                               Generation Output Quality (1-5)
                             </label>
                             <div className="flex items-center gap-1.5 pt-1">
@@ -1081,13 +1081,13 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-[10px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                            <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
                               Long-term Deal Performance
                             </label>
                             <select
                               value={deck.performance}
                               onChange={(e) => updateDeckHistory(deck.id, { performance: e.target.value as DeckHistoryEntry["performance"] })}
-                              className="w-full h-9 px-3 rounded-md bg-[#000F2C] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                              className="w-full h-9 px-3 rounded-md bg-white/4 border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
                             >
                               <option value="pending">Pending</option>
                               <option value="ongoing">Active / Ongoing Validation</option>
@@ -1098,14 +1098,14 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                         </div>
 
                         <div className="space-y-1 h-full flex flex-col">
-                          <label className="text-[10px] font-semibold uppercase tracking-wider text-[#6878A8]">
+                          <label className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
                             Qualitative Feedback / Deal Context
                           </label>
                           <textarea
                             value={deck.feedback}
                             onChange={(e) => updateDeckHistory(deck.id, { feedback: e.target.value })}
                             placeholder="How did the client react? What worked and what failed in this presentation? This text will be used to automatically train future AI models."
-                            className="flex-1 w-full min-h-[100px] p-3 rounded-md bg-[#000F2C] border border-border text-xs text-white placeholder:text-[#4E5E8A] resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
+                            className="flex-1 w-full min-h-[100px] p-3 rounded-md bg-white/4 border border-border text-xs text-white placeholder:text-white/25 resize-none focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-green)] transition-colors"
                           />
                         </div>
                       </div>
