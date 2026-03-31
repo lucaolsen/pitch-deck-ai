@@ -71,12 +71,14 @@ Use ONLY these constants. Never hardcode other hex values.
 
 export function buildUserMessage(
   prompt: string,
-  deckType: "one-pager" | "pitch-15",
+  deckType: "one-pager" | "pitch-15" | "modular",
   documents: string[]
 ): string {
   const deckTypeLabel =
     deckType === "pitch-15"
       ? "Full pitch deck with 15 slides (cover, problem, solution, market opportunity, product overview, competitive advantages, business model, key metrics, case studies, team, technology, roadmap, partnerships, pricing, CTA)"
+      : deckType === "modular"
+      ? "Modular pitch deck: you decide the number of slides (between 1 and 15) based on what the content and context actually require. Include only slides that add real value — do not pad with filler slides. Choose the slide topics that best serve the specific request."
       : "One-pager executive summary (1 slide with the most impactful information)";
 
   return `## Sales Documents

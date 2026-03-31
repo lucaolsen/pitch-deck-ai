@@ -31,6 +31,7 @@ const PERSONAS = [
 ];
 const OUTPUT_FORMATS = [
   { value: "pitch-15", label: "Full pitch (15 slides)" },
+  { value: "modular", label: "Modular (1–15 slides, AI decides)" },
   { value: "one-pager", label: "One-pager (1 slide)" },
 ] as const;
 
@@ -116,7 +117,7 @@ export function DeckBuilder() {
   const [vertical, setVertical] = useState("SaaS");
   const [persona, setPersona] = useState("Expansion Driver");
   const [methodology, setMethodology] = useState(METHODOLOGIES[0].id);
-  const [deckType, setDeckType] = useState<"one-pager" | "pitch-15">("pitch-15");
+  const [deckType, setDeckType] = useState<"one-pager" | "pitch-15" | "modular">("pitch-15");
   const [additionalContext, setAdditionalContext] = useState("");
   const [selectedDocs, setSelectedDocs] = useState<Set<string>>(
     new Set(PRELOADED_DOCS.map((d) => d.file))
@@ -494,7 +495,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             </label>
             <select
               value={deckType}
-              onChange={(e) => setDeckType(e.target.value as "one-pager" | "pitch-15")}
+              onChange={(e) => setDeckType(e.target.value as "one-pager" | "pitch-15" | "modular")}
               className="w-full h-11 px-3 rounded-lg bg-[oklch(0.2_0.005_85)] border border-border text-sm text-white appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] transition-colors hover:bg-[oklch(0.22_0.005_85)]"
             >
               {OUTPUT_FORMATS.map((f) => (

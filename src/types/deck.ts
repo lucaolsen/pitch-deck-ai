@@ -1,6 +1,6 @@
 export interface DeckRequest {
   prompt: string;
-  deckType: "one-pager" | "pitch-15";
+  deckType: "one-pager" | "pitch-15" | "modular";
   documents: string[];
   brandConfig?: Partial<BrandConfig>;
 }
