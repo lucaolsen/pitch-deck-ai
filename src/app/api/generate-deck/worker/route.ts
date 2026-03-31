@@ -86,10 +86,13 @@ export async function runGeneration(jobId: string): Promise<void> {
       return await stream.finalMessage();
     }
 
+    // Max tokens per deck type — code for slides rarely exceeds 6k tokens
+    const maxTokens = deckType === "one-pager" ? 8000 : deckType === "modular" ? 16000 : 32000;
+
     // Initial Claude request
     let currentResponse = await streamRequest({
       model: "claude-sonnet-4-6",
-      max_tokens: 128000,
+      max_tokens: maxTokens,
       betas: ["code-execution-2025-08-25", "skills-2025-10-02"],
       container: {
         skills: [{ type: "anthropic" as const, skill_id: "pptx", version: "latest" }],
@@ -119,7 +122,7 @@ export async function runGeneration(jobId: string): Promise<void> {
 
       currentResponse = await streamRequest({
         model: "claude-sonnet-4-6",
-        max_tokens: 128000,
+        max_tokens: maxTokens,
         betas: ["code-execution-2025-08-25", "skills-2025-10-02"],
         container: {
           id: (currentResponse as unknown as { container?: { id?: string } }).container?.id,
