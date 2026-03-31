@@ -11,6 +11,7 @@ Here is the flow you must follow:
 4. You also have access to the EBANX sales document database. You must select which documents are most relevant to the user's request.
 
 Available EBANX Documents:
+- 00_ebanx_visual_guide.md (EBANX visual identity, color palette, slide design guide — always include)
 - 02_icp_playbook.md (Ideal customer profiles and targeting)
 - 03_value_pillars.md (Core value propositions and differentiators)
 - 04_industries_sales_deck.md (Industry-specific sales material)

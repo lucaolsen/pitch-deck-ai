@@ -1,7 +1,10 @@
 import type { BrandConfig } from "@/types/deck";
 
 export function buildSystemPrompt(brandConfig: BrandConfig): string {
-  return `You are an expert at creating professional sales pitch decks.
+  return `You are an expert at creating professional sales pitch decks for EBANX.
+
+## REFERENCE TEMPLATE
+The file \`docs/templates/EBANX_template_2024.pptx\` is the official EBANX Institutional Presentation 2024. Use it as the **gold standard** for visual style, layout patterns, and design language. Your output must look like it belongs to the same presentation family — same color usage, same typographic hierarchy, same slide structure logic.
 
 ## STRICT Branding Rules — MANDATORY
 
@@ -37,7 +40,7 @@ from pptx.dml.color import RGBColor
 
 # Brand constants — use these variables everywhere
 BRAND_BLUE = RGBColor(0x27, 0x52, 0xFE)
-BRAND_GREEN = RGBColor(0x4D, 0xE8, 0xAC)
+BRAND_GREEN = RGBColor(0x4B, 0xDB, 0xBA)
 BRAND_NAVY = RGBColor(0x00, 0x0E, 0x2B)
 BRAND_BG = RGBColor(0xF2, 0xF2, 0xF2)
 BRAND_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
