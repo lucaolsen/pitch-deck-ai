@@ -73,10 +73,10 @@ Use ONLY these constants. Never hardcode other hex values.
 
 ## Code Generation Rules — CRITICAL FOR PERFORMANCE
 - Write ALL slide-creation code in a **single Python code block**. Do NOT split into multiple blocks.
-- Use helper functions (e.g. `add_title_slide()`, `add_content_slide()`) to keep code compact — avoid copy-pasting the same pattern per slide.
+- Use helper functions (e.g. \`add_title_slide()\`, \`add_content_slide()\`) to keep code compact — avoid copy-pasting the same pattern per slide.
 - No comments, no docstrings, no print statements other than the final save confirmation.
-- Use short, concise variable names (e.g. `s`, `tf`, `p` instead of `current_slide`, `text_frame`, `paragraph`).
-- Call `prs.save("output.pptx")` at the end of the single code block — do NOT save in multiple places.`;
+- Use short, concise variable names (e.g. \`s\`, \`tf\`, \`p\` instead of \`current_slide\`, \`text_frame\`, \`paragraph\`).
+- Call \`prs.save("output.pptx")\` at the end of the single code block — do NOT save in multiple places.`;
 }
 
 export function buildUserMessage(
