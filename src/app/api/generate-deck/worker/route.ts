@@ -52,6 +52,18 @@ export async function runGeneration(jobId: string): Promise<void> {
   }
 
   const startTime = Date.now();
+  // Mark job as failed 20s before Vercel kills the function (maxDuration=300s)
+  const DEADLINE_MS = 275 * 1000;
+  const deadlineTimer = setTimeout(async () => {
+    console.error(`[worker] Approaching Vercel timeout — marking job ${jobId} as failed`);
+    await updateJob(jobId, {
+      status: "failed",
+      progress: 0,
+      progressMessage: "Failed",
+      error: "Generation timed out. Try using Modular or One-pager format, or deselect some base documents.",
+    });
+  }, DEADLINE_MS);
+
   console.log(`[worker] === JOB ${jobId} START ===`);
 
   await updateJob(jobId, {
@@ -170,6 +182,7 @@ export async function runGeneration(jobId: string): Promise<void> {
     const { url, size } = await uploadDeck(fileBytes, fileName);
     const generationTime = Date.now() - startTime;
 
+    clearTimeout(deadlineTimer);
     await updateJob(jobId, {
       status: "completed",
       progress: 100,
@@ -182,6 +195,7 @@ export async function runGeneration(jobId: string): Promise<void> {
 
     console.log(`[worker] === JOB ${jobId} COMPLETE in ${generationTime}ms ===`);
   } catch (error) {
+    clearTimeout(deadlineTimer);
     const message = error instanceof Error ? error.message : "Unknown error";
     console.error(`[worker] === JOB ${jobId} FAILED ===`, error);
     await updateJob(jobId, {

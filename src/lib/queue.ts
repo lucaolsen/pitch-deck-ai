@@ -25,9 +25,8 @@ export async function publishGenerateJob(jobId: string): Promise<void> {
   await client.publishJSON({
     url: `${appUrl}/api/generate-deck/worker`,
     body: { jobId },
-    retries: 3,
+    retries: 0,
     headers: {
-      "Upstash-Timeout": "600s",
       "Upstash-Deduplication-Id": jobId,
     },
   });

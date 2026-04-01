@@ -304,34 +304,47 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
       if (response.status === 202 && result.jobId) {
         setStatusMessage("Queued for compilation...");
-        
-        // Polling loop
+
+        // Polling loop — 5s interval, max 6 min
         let pollCount = 0;
-        const maxPolls = 120; // 10 minutes (120 * 5s)
-        
+        const maxPolls = 72; // 6 minutes (72 * 5s)
+        const MESSAGES = [
+          "Analyzing documents...",
+          "Structuring slides...",
+          "Generating presentation...",
+          "Applying EBANX branding...",
+          "Running code execution...",
+          "Finalizing deck...",
+        ];
+
         while (pollCount < maxPolls) {
           await new Promise((resolve) => setTimeout(resolve, 5000));
           pollCount++;
-          
-          if (pollCount % 2 === 0) setStatusMessage(`Optimizing layout... (${pollCount * 5}s)`);
-          
-          const statusRes = await fetch(`/api/generate-deck/status/${result.jobId}`);
-          if (!statusRes.ok) throw new Error("Failed to check job status");
-          
-          const job = await statusRes.json();
-          
+
+          const msgIdx = Math.min(Math.floor(pollCount / 4), MESSAGES.length - 1);
+          setStatusMessage(`${MESSAGES[msgIdx]} (${Math.round(pollCount * 5 / 60)}m${(pollCount * 5) % 60}s)`);
+
+          let job: { status: string; error?: string; downloadUrl?: string; fileName?: string; fileSize?: number; generationTime?: number };
+          try {
+            const statusRes = await fetch(`/api/generate-deck/status/${result.jobId}`);
+            if (!statusRes.ok) continue; // transient error — keep polling
+            job = await statusRes.json();
+          } catch {
+            continue; // network hiccup — keep polling
+          }
+
           if (job.status === "failed") {
             throw new Error(job.error || "Generation failed during processing");
           }
-          
+
           if (job.status === "completed") {
             result = job;
             break;
           }
         }
-        
+
         if (pollCount >= maxPolls) {
-          throw new Error("Generation timed out");
+          throw new Error("Generation timed out. Try using Modular or One-pager format, or deselect some base documents.");
         }
       } else if (!response.ok) {
         throw new Error(result.error || "Failed to generate deck");
