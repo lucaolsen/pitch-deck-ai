@@ -44,6 +44,18 @@ const PRELOADED_DOCS = [
   { file: "06_latam_modular_sales_deck.md", name: "LATAM Modular Sales Deck", description: "Latin America modular sales deck with market data and country insights" },
 ];
 
+// Docs selected by default per vertical — reduces context size and generation time
+const VERTICAL_DOCS: Record<string, string[]> = {
+  "SaaS":               ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "04_industries_sales_deck.md"],
+  "Retail / E-commerce":["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "04_industries_sales_deck.md", "05_latam_sales_deck.md"],
+  "Gaming":             ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "05_latam_sales_deck.md"],
+  "Digital Goods":      ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "05_latam_sales_deck.md"],
+  "Travel":             ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "04_industries_sales_deck.md", "05_latam_sales_deck.md"],
+  "Financial Services": ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "04_industries_sales_deck.md"],
+  "Streaming":          ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "04_industries_sales_deck.md"],
+  "All LATAM":          ["00_ebanx_visual_guide.md", "02_icp_playbook.md", "03_value_pillars.md", "05_latam_sales_deck.md", "06_latam_modular_sales_deck.md"],
+};
+
 const PROGRESS_MESSAGES = [
   "Analyzing sales documents...",
   "Identifying key metrics and insights...",
@@ -122,7 +134,7 @@ export function DeckBuilder() {
   const [deckType, setDeckType] = useState<"one-pager" | "pitch-5" | "modular">("pitch-5");
   const [additionalContext, setAdditionalContext] = useState("");
   const [selectedDocs, setSelectedDocs] = useState<Set<string>>(
-    new Set(PRELOADED_DOCS.map((d) => d.file))
+    new Set(VERTICAL_DOCS["SaaS"])
   );
   const [uploadedDocs, setUploadedDocs] = useState<string[]>([]);
   const [brand, setBrand] = useState<BrandConfig>({ ...DEFAULT_BRAND_CONFIG });
@@ -159,6 +171,12 @@ export function DeckBuilder() {
       })
       .catch(() => {});
   }, []);
+
+  // Auto-select relevant docs when vertical changes
+  useEffect(() => {
+    const docs = VERTICAL_DOCS[vertical] ?? VERTICAL_DOCS["SaaS"];
+    setSelectedDocs(new Set(docs));
+  }, [vertical]);
 
   const addDeckToHistory = (entry: DeckHistoryEntry) => {
     setHistory((prev) => {
@@ -794,37 +812,48 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
               )}
 
               {/* Error state */}
-              {status === "error" && (
-                <div className="w-full max-w-lg animate-fade-in">
-                  <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-6">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" />
-                          <line x1="15" y1="9" x2="9" y2="15" />
-                          <line x1="9" y1="9" x2="15" y2="15" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold text-red-400">
-                          Failed to generate deck
-                        </h3>
-                        {error && (
-                          <p className="text-xs text-red-400/70 mt-1 leading-relaxed">
-                            {error}
-                          </p>
-                        )}
-                        <button
-                          onClick={() => { setStatus("idle"); setError(""); }}
-                          className="mt-3 text-xs font-medium text-red-400 hover:text-red-300 cursor-pointer transition-colors"
-                        >
-                          Try again →
-                        </button>
+              {status === "error" && (() => {
+                const isOverloaded = error?.toLowerCase().includes("overload") || error?.toLowerCase().includes("sobrecarregad");
+                return (
+                  <div className="w-full max-w-lg animate-fade-in">
+                    <div className={`rounded-xl border p-6 ${isOverloaded ? "border-amber-500/20 bg-amber-500/5" : "border-red-500/20 bg-red-500/5"}`}>
+                      <div className="flex items-start gap-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${isOverloaded ? "bg-amber-500/10" : "bg-red-500/10"}`}>
+                          {isOverloaded ? (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                              <line x1="12" y1="9" x2="12" y2="13" />
+                              <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                          ) : (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <circle cx="12" cy="12" r="10" />
+                              <line x1="15" y1="9" x2="9" y2="15" />
+                              <line x1="9" y1="9" x2="15" y2="15" />
+                            </svg>
+                          )}
+                        </div>
+                        <div>
+                          <h3 className={`text-sm font-semibold ${isOverloaded ? "text-amber-500" : "text-red-400"}`}>
+                            {isOverloaded ? "API temporarily busy" : "Failed to generate deck"}
+                          </h3>
+                          {error && (
+                            <p className={`text-xs mt-1 leading-relaxed ${isOverloaded ? "text-amber-500/70" : "text-red-400/70"}`}>
+                              {error}
+                            </p>
+                          )}
+                          <button
+                            onClick={() => { setStatus("idle"); setError(""); }}
+                            className={`mt-3 text-xs font-medium cursor-pointer transition-colors ${isOverloaded ? "text-amber-500 hover:text-amber-400" : "text-red-400 hover:text-red-300"}`}
+                          >
+                            Try again →
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
             </div>
           )}
 

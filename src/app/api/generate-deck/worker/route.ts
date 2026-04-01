@@ -224,7 +224,11 @@ export async function runGeneration(jobId: string): Promise<void> {
     console.log(`[worker] === JOB ${jobId} COMPLETE in ${generationTime}ms ===`);
   } catch (error) {
     clearTimeout(deadlineTimer);
-    const message = error instanceof Error ? error.message : "Unknown error";
+    const raw = error instanceof Error ? error.message : "Unknown error";
+    const isOverloaded = raw.includes("overloaded") || raw.includes("529");
+    const message = isOverloaded
+      ? "Anthropic API is overloaded right now. Wait 1–2 minutes and try again."
+      : raw;
     console.error(`[worker] === JOB ${jobId} FAILED ===`, error);
     await updateJob(jobId, {
       status: "failed",
