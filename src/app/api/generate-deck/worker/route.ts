@@ -74,7 +74,13 @@ export async function runGeneration(jobId: string): Promise<void> {
 
   try {
     const { prompt, deckType, documents: rawDocs, brandConfig: partialBrand } = job.payload;
-    const documents = resolveDocuments(rawDocs);
+    // Cap each document at 15k chars to keep total input under ~90k and stay within Vercel 300s limit
+    const MAX_DOC_CHARS = 15_000;
+    const documents = resolveDocuments(rawDocs).map((doc) =>
+      doc.length > MAX_DOC_CHARS
+        ? doc.slice(0, MAX_DOC_CHARS) + "\n\n[... document truncated for processing efficiency ...]"
+        : doc
+    );
 
     if (!documents.length) {
       throw new Error("No documents resolved");
@@ -121,7 +127,7 @@ export async function runGeneration(jobId: string): Promise<void> {
     }
 
     // Max tokens per deck type — code for slides rarely exceeds 4k tokens per slide
-    const maxTokens = deckType === "one-pager" ? 8000 : deckType === "modular" ? 12000 : 16000; // pitch-5
+    const maxTokens = deckType === "one-pager" ? 6000 : deckType === "modular" ? 10000 : 12000; // pitch-5
 
     // Initial Claude request
     let currentResponse = await streamRequest({
@@ -140,7 +146,7 @@ export async function runGeneration(jobId: string): Promise<void> {
 
     // Handle continuations
     let continuations = 0;
-    const MAX_CONTINUATIONS = 10;
+    const MAX_CONTINUATIONS = 5;
     const allContent = [...currentResponse.content];
 
     while (
