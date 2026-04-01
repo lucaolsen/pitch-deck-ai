@@ -27,7 +27,7 @@ export async function publishGenerateJob(jobId: string): Promise<void> {
     body: { jobId },
     retries: 3,
     headers: {
-      "Upstash-Timeout": "600",
+      "Upstash-Timeout": "600s",
       "Upstash-Deduplication-Id": jobId,
     },
   });
