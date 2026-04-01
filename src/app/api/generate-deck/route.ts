@@ -18,9 +18,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!["one-pager", "pitch-15", "modular"].includes(deckType)) {
+    if (!["one-pager", "pitch-5", "modular"].includes(deckType)) {
       return NextResponse.json(
-        { success: false, error: "deckType must be 'one-pager', 'pitch-15', or 'modular'" },
+        { success: false, error: "deckType must be 'one-pager', 'pitch-5', or 'modular'" },
         { status: 400 }
       );
     }

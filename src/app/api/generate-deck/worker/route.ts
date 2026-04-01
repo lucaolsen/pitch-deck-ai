@@ -120,8 +120,8 @@ export async function runGeneration(jobId: string): Promise<void> {
       throw lastError;
     }
 
-    // Max tokens per deck type — code for slides rarely exceeds 6k tokens
-    const maxTokens = deckType === "one-pager" ? 8000 : deckType === "modular" ? 16000 : 32000;
+    // Max tokens per deck type — code for slides rarely exceeds 4k tokens per slide
+    const maxTokens = deckType === "one-pager" ? 8000 : deckType === "modular" ? 12000 : 16000; // pitch-5
 
     // Initial Claude request
     let currentResponse = await streamRequest({

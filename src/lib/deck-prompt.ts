@@ -81,15 +81,15 @@ Use ONLY these constants. Never hardcode other hex values.
 
 export function buildUserMessage(
   prompt: string,
-  deckType: "one-pager" | "pitch-15" | "modular",
+  deckType: "one-pager" | "pitch-5" | "modular",
   documents: string[]
 ): string {
   const deckTypeLabel =
-    deckType === "pitch-15"
-      ? "Full pitch deck with 15 slides (cover, problem, solution, market opportunity, product overview, competitive advantages, business model, key metrics, case studies, team, technology, roadmap, partnerships, pricing, CTA)"
+    deckType === "pitch-5"
+      ? "Pitch deck with exactly 5 slides. Choose the 5 most impactful slides from: cover, problem/opportunity, EBANX solution & differentiators, key metrics & case study, and CTA. Write all code in a single compact Python block using helper functions."
       : deckType === "modular"
-      ? "Modular pitch deck: you decide the number of slides (between 1 and 15) based on what the content and context actually require. Include only slides that add real value — do not pad with filler slides. Choose the slide topics that best serve the specific request."
-      : "One-pager executive summary (1 slide with the most impactful information)";
+      ? "Modular pitch deck: choose between 2 and 5 slides based on what the content actually requires. Include only slides that add real value. Write all code in a single compact Python block using helper functions."
+      : "One-pager: exactly 1 slide with the most impactful information. Write all code in a single compact Python block.";
 
   return `## Sales Documents
 

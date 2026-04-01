@@ -30,8 +30,8 @@ const PERSONAS = [
   "General Decision Maker",
 ];
 const OUTPUT_FORMATS = [
-  { value: "pitch-15", label: "Full pitch (15 slides)" },
-  { value: "modular", label: "Modular (1–15 slides, AI decides)" },
+  { value: "pitch-5", label: "Pitch deck (5 slides)" },
+  { value: "modular", label: "Modular (2–5 slides, AI decides)" },
   { value: "one-pager", label: "One-pager (1 slide)" },
 ] as const;
 
@@ -119,7 +119,7 @@ export function DeckBuilder() {
   const [vertical, setVertical] = useState("SaaS");
   const [persona, setPersona] = useState("Expansion Driver");
   const [methodology, setMethodology] = useState(METHODOLOGIES[0].id);
-  const [deckType, setDeckType] = useState<"one-pager" | "pitch-15" | "modular">("pitch-15");
+  const [deckType, setDeckType] = useState<"one-pager" | "pitch-5" | "modular">("pitch-5");
   const [additionalContext, setAdditionalContext] = useState("");
   const [selectedDocs, setSelectedDocs] = useState<Set<string>>(
     new Set(PRELOADED_DOCS.map((d) => d.file))
@@ -510,7 +510,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
             </label>
             <select
               value={deckType}
-              onChange={(e) => setDeckType(e.target.value as "one-pager" | "pitch-15" | "modular")}
+              onChange={(e) => setDeckType(e.target.value as "one-pager" | "pitch-5" | "modular")}
               className="w-full h-11 px-3 rounded-lg bg-[#F4F6FF] border border-[rgba(0,14,43,0.12)] text-sm text-[#000E2B] appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] transition-colors hover:bg-[#EEF1FA]"
             >
               {OUTPUT_FORMATS.map((f) => (
