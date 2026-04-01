@@ -89,13 +89,35 @@ export async function runGeneration(jobId: string): Promise<void> {
 
     await updateJob(jobId, { progress: 15, progressMessage: "Generating presentation..." });
 
-    // Stream request helper
+    // Stream request helper with retry on overload
     async function streamRequest(params: Parameters<typeof anthropic.beta.messages.create>[0]) {
-      const stream = anthropic.beta.messages.stream({
-        ...params,
-        stream: true,
-      } as Parameters<typeof anthropic.beta.messages.stream>[0]);
-      return await stream.finalMessage();
+      const MAX_RETRIES = 4;
+      let lastError: unknown;
+      for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+        if (attempt > 0) {
+          const delay = Math.min(10000, 2000 * Math.pow(2, attempt - 1)); // 2s, 4s, 8s, capped at 10s
+          console.log(`[worker] Retrying after ${delay}ms (attempt ${attempt + 1})`);
+          await new Promise((r) => setTimeout(r, delay));
+        }
+        try {
+          const stream = anthropic.beta.messages.stream({
+            ...params,
+            stream: true,
+          } as Parameters<typeof anthropic.beta.messages.stream>[0]);
+          return await stream.finalMessage();
+        } catch (err: unknown) {
+          const isOverloaded =
+            err instanceof Error &&
+            (err.message.includes("overloaded") || err.message.includes("529") || (err as { status?: number }).status === 529);
+          if (isOverloaded && attempt < MAX_RETRIES - 1) {
+            console.warn(`[worker] Anthropic overloaded, will retry (attempt ${attempt + 1})`);
+            lastError = err;
+            continue;
+          }
+          throw err;
+        }
+      }
+      throw lastError;
     }
 
     // Max tokens per deck type — code for slides rarely exceeds 6k tokens
