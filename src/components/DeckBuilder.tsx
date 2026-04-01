@@ -315,7 +315,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
           
           if (pollCount % 2 === 0) setStatusMessage(`Optimizing layout... (${pollCount * 5}s)`);
           
-          const statusRes = await fetch(`/api/status/${result.jobId}`);
+          const statusRes = await fetch(`/api/generate-deck/status/${result.jobId}`);
           if (!statusRes.ok) throw new Error("Failed to check job status");
           
           const job = await statusRes.json();
