@@ -40,6 +40,7 @@ const PRELOADED_DOCS = [
   { file: "02_icp_playbook.md", name: "ICP Playbook", description: "Ideal customer profiles and targeting" },
   { file: "03_value_pillars.md", name: "Value Pillars", description: "Core value propositions and differentiators" },
   { file: "04_industries_sales_deck.md", name: "Industries Sales Deck", description: "Industry-specific sales material" },
+  { file: "05_latam_sales_deck.md", name: "LATAM Sales Deck", description: "Detailed country-level market data: Brazil, Mexico, Colombia, Chile, Argentina, Peru" },
   { file: "06_latam_modular_sales_deck.md", name: "LATAM Modular Sales Deck", description: "Latin America modular sales deck with market data and country insights" },
 ];
 
@@ -338,7 +339,7 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
 
       stopProgressSimulation();
 
-      if (!result.success && !result.downloadUrl) {
+      if (!result.downloadUrl) {
         throw new Error(result.error || "Generation failed");
       }
 
