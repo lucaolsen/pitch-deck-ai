@@ -1001,40 +1001,16 @@ Focus on relevant metrics, case studies, and value propositions for this specifi
                 ))}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880]">
-                    Title Font
-                  </label>
-                  <select
-                    value={brand.titleFont}
-                    onChange={(e) => setBrand({ ...brand, titleFont: e.target.value })}
-                    className="w-full text-sm text-[#000E2B] bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] -ml-1 px-1 rounded"
-                    style={{ fontFamily: brand.titleFont }}
-                  >
-                    {FONTS.map((font) => (
-                      <option key={font} value={font} style={{ fontFamily: font }}>
-                        {font}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] space-y-2 focus-within:border-[var(--ebanx-blue)] transition-colors">
-                  <label className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880]">
-                    Body Font
-                  </label>
-                  <select
-                    value={brand.bodyFont}
-                    onChange={(e) => setBrand({ ...brand, bodyFont: e.target.value })}
-                    className="w-full text-sm text-[#000E2B] bg-transparent border-none appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[var(--ebanx-blue)] -ml-1 px-1 rounded"
-                    style={{ fontFamily: brand.bodyFont }}
-                  >
-                    {FONTS.map((font) => (
-                      <option key={font} value={font} style={{ fontFamily: font }}>
-                        {font}
-                      </option>
-                    ))}
-                  </select>
+              <div className="p-4 rounded-lg border border-[rgba(0,14,43,0.10)] bg-[#F4F6FF] flex items-start gap-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6880" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-0.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-[#5A6880] mb-1">Typography</p>
+                  <p className="text-sm text-[#000E2B]">All generated decks use <span className="font-semibold">Arial</span> (Bold for titles, Regular for body text).</p>
+                  <p className="text-xs text-[#5A6880] mt-1">The generation sandbox only has Arial available. Custom font selection is not supported in the current infrastructure.</p>
                 </div>
               </div>
             </div>

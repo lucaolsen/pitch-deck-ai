@@ -24,8 +24,8 @@ You MUST follow these color and typography rules exactly. Do NOT use any colors 
 **DO NOT** introduce new colors, tints, gradients, or variations. If you need a lighter/darker shade, use one of the colors above with transparency (e.g., RGBColor + alpha in python-pptx), NOT a new hex value.
 
 ### Typography
-- **Title font**: Calibri Bold (fallback for ${brandConfig.titleFont} which is unavailable in sandbox)
-- **Body font**: Calibri (fallback for ${brandConfig.bodyFont})
+- **Title font**: Arial Bold — the generation sandbox only has Arial available; use it directly
+- **Body font**: Arial — the generation sandbox only has Arial available; use it directly
 - Title size: 36-44pt bold
 - Subtitle size: 20-24pt
 - Body size: 16-18pt
@@ -46,8 +46,8 @@ BRAND_BG = RGBColor(0xF2, 0xF2, 0xF2)
 BRAND_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 BRAND_TEXT = RGBColor(0x22, 0x22, 0x22)
 BRAND_GRAY = RGBColor(0xD1, 0xD1, 0xD1)
-FONT_TITLE = "Calibri"
-FONT_BODY = "Calibri"
+FONT_TITLE = "Arial"
+FONT_BODY = "Arial"
 \`\`\`
 Use ONLY these constants. Never hardcode other hex values.
 
